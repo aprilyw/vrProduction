@@ -2,21 +2,19 @@ var layer = _.stage.withName("rain")
 layer.vrDefaults()
 layer.makeKeyboardCamera()
 
-
-var num = 20
-var droplets = []
-
-for(var i=0;i<num;i++) {
-	droplets.push(vec(Math.random(),Math.random(),Math.random()))
-}
-
 var rainDirection = vec(0,-0.05,0)
 
-function draw_rain() {
+function draw_rain(num) {
+	var droplets = []
+
+	for(var i=0;i<num;i++) {
+		droplets.push(vec(Math.random(),Math.random(),Math.random()))
+	}
+
 	var f = new FLine()	
 	f.color = vec(1,1,1,1)
 	
-	for(var i=0;i<num;i++){
+	for(i=0;i<num;i++){
 		f.moveTo(droplets[i])
 		f.lineTo(droplets[i]+rainDirection)
 	}
@@ -28,13 +26,13 @@ function draw_rain() {
 		if (droplets[i].y<0){
 			droplets[i] = vec(Math.random(),Math.random(),Math.random())
 		}
-	}	
+	}
+
 }
 
 
 while(true) {
-	draw_rain()
+	draw_rain(30)
 	_.stage.frame()
 }
-
 
