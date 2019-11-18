@@ -12,9 +12,7 @@ for(var i=0;i<num;i++) {
 
 var rainDirection = vec(0,-0.05,0)
 
-
-
-while(_.wait()) {
+function draw_rain() {
 	var f = new FLine()	
 	f.color = vec(1,1,1,1)
 	
@@ -33,4 +31,10 @@ while(_.wait()) {
 	}	
 }
 
-//_.stage.frame()
+
+while(true) {
+	draw_rain()
+	_.stage.frame()
+}
+
+
